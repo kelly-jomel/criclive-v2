@@ -1,6 +1,5 @@
 import React from 'react';
 import { CricketMatch } from '@/types/cricket';
-import { Radio } from 'lucide-react';
 
 interface MatchStripProps {
   matches: CricketMatch[];
@@ -14,7 +13,7 @@ export const MatchStrip: React.FC<MatchStripProps> = ({
   onSelectMatch
 }) => {
   return (
-    <div className="bg-slate-950 border-b border-slate-800 py-2.5 overflow-x-auto scrollbar-thin">
+    <div className="bg-white border-b border-slate-200 py-3 shadow-xs overflow-x-auto scrollbar-thin">
       <div className="max-w-7xl mx-auto px-4 flex items-center gap-3">
         {matches.map((m) => {
           const isSelected = m.id === selectedMatchId;
@@ -24,24 +23,24 @@ export const MatchStrip: React.FC<MatchStripProps> = ({
             <button
               key={m.id}
               onClick={() => onSelectMatch(m.id)}
-              className={`shrink-0 min-w-[260px] max-w-[300px] text-left p-3 rounded-xl border transition-all ${
+              className={`shrink-0 min-w-[270px] max-w-[310px] text-left p-3.5 rounded-xl border transition-all ${
                 isSelected
-                  ? 'bg-slate-900 border-red-500 shadow-lg shadow-red-500/10'
-                  : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'
+                  ? 'bg-red-50/50 border-red-500 shadow-md ring-2 ring-red-500/10'
+                  : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-sm'
               }`}
             >
               {/* Header Status */}
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-semibold text-slate-400 truncate max-w-[170px]">
+                <span className="text-[11px] font-bold text-slate-500 truncate max-w-[170px]">
                   {m.format} • {m.series.split(' ')[0]}
                 </span>
                 {isLive ? (
-                  <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-red-500 bg-red-500/10 px-1.5 py-0.5 rounded border border-red-500/20">
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping"></span>
+                  <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-red-600 bg-red-100 px-2 py-0.5 rounded-full border border-red-200">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-600 animate-ping"></span>
                     LIVE
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium text-slate-400 uppercase">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase bg-slate-100 px-2 py-0.5 rounded-full">
                     {m.status}
                   </span>
                 )}
@@ -50,35 +49,35 @@ export const MatchStrip: React.FC<MatchStripProps> = ({
               {/* Team 1 */}
               <div className="flex items-center justify-between text-xs font-semibold py-0.5">
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[10px] text-slate-300 font-bold border border-slate-700">
+                  <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] text-slate-700 font-bold border border-slate-300">
                     {m.team1.teamCode.slice(0, 2)}
                   </div>
-                  <span className={m.currentBattingTeam === 'team1' ? 'text-white font-bold' : 'text-slate-300'}>
+                  <span className={m.currentBattingTeam === 'team1' ? 'text-slate-900 font-bold' : 'text-slate-600'}>
                     {m.team1.teamName}
                   </span>
                 </div>
-                <span className="text-white font-mono">
-                  {m.team1.score}/{m.team1.wickets} <span className="text-[10px] text-slate-400">({m.team1.overs})</span>
+                <span className="text-slate-900 font-mono font-bold">
+                  {m.team1.score}/{m.team1.wickets} <span className="text-[10px] font-normal text-slate-500">({m.team1.overs})</span>
                 </span>
               </div>
 
               {/* Team 2 */}
               <div className="flex items-center justify-between text-xs font-semibold py-0.5">
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[10px] text-slate-300 font-bold border border-slate-700">
+                  <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] text-slate-700 font-bold border border-slate-300">
                     {m.team2.teamCode.slice(0, 2)}
                   </div>
-                  <span className={m.currentBattingTeam === 'team2' ? 'text-white font-bold' : 'text-slate-300'}>
+                  <span className={m.currentBattingTeam === 'team2' ? 'text-slate-900 font-bold' : 'text-slate-600'}>
                     {m.team2.teamName}
                   </span>
                 </div>
-                <span className="text-white font-mono">
-                  {m.team2.score}/{m.team2.wickets} <span className="text-[10px] text-slate-400">({m.team2.overs})</span>
+                <span className="text-slate-900 font-mono font-bold">
+                  {m.team2.score}/{m.team2.wickets} <span className="text-[10px] font-normal text-slate-500">({m.team2.overs})</span>
                 </span>
               </div>
 
               {/* Footer status text */}
-              <div className="mt-2 pt-1.5 border-t border-slate-800/80 text-[11px] text-red-400 font-medium truncate">
+              <div className="mt-2 pt-1.5 border-t border-slate-100 text-[11px] text-red-600 font-semibold truncate">
                 {m.statusText}
               </div>
             </button>

@@ -9,9 +9,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Live Cricket Score, Commentary & AI Insights | Criclive.in",
+  title: "Live Cricket Score, Match Schedules & Latest News | Criclive.in",
   description:
-    "Ultra-fast live cricket scores, ball-by-ball commentary, match schedules, AI win predictors, and player stats for international & domestic matches on Criclive.in.",
+    "Live cricket scores, ball-by-ball commentary, match schedules, breaking news and player stats for international & domestic series — free on Criclive.in.",
   keywords: [
     "live cricket score",
     "cricket ball by ball commentary",
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     "IPL live score",
     "T20 World Cup live",
   ],
-  authors: [{ name: "Criclive Team" }],
+  authors: [{ name: "Nikhil Kumar Pandey" }],
   openGraph: {
-    title: "Live Cricket Score & Real-Time Commentary | Criclive.in",
+    title: "Live Cricket Score, Schedule, Latest News | Criclive.in",
     description:
-      "Follow real-time ball-by-ball cricket scores, AI win predictors, and match schedules with sub-second live updates.",
+      "Follow real-time live cricket scores, ball-by-ball commentary, schedules, and news on Criclive.in.",
     url: "https://criclive.in",
     siteName: "Criclive.in",
     type: "website",
@@ -33,32 +33,37 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Criclive.in - High Performance Live Cricket Platform",
-    description: "Follow real-time live cricket scores and AI match insights.",
+    title: "Live Cricket Score & Match Updates | Criclive.in",
+    description: "Real-time live cricket scores, ball-by-ball commentary, and match schedules.",
   },
 };
 
-const sportsEventJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SportsEvent",
-  "name": "India vs Australia, 3rd T20I",
-  "sport": "Cricket",
-  "startDate": "2026-11-24T14:00:00+05:30",
-  "location": {
-    "@type": "Place",
-    "name": "Wankhede Stadium, Mumbai"
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Criclive.in",
+    "url": "https://criclive.in/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://criclive.in/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   },
-  "competitor": [
-    { "@type": "SportsTeam", "name": "India" },
-    { "@type": "SportsTeam", "name": "Australia" }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "price": "0",
-    "priceCurrency": "INR"
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Criclive.in",
+    "url": "https://criclive.in/",
+    "logo": "https://criclive.in/apple-touch-icon.png",
+    "sameAs": [
+      "https://www.facebook.com/share/14WMVSrab9B/",
+      "https://x.com/criclive_in",
+      "https://www.instagram.com/criclive_in?igsh=MW5mcHIxZXNqYm85Mw==",
+      "https://www.youtube.com/@criclive_in"
+    ]
   }
-};
+];
 
 export default function RootLayout({
   children,
@@ -66,14 +71,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="bg-slate-950 text-slate-100 antialiased selection:bg-red-500 selection:text-white">
+      <body className="bg-slate-50 text-slate-900 antialiased selection:bg-red-600 selection:text-white">
         {children}
       </body>
     </html>

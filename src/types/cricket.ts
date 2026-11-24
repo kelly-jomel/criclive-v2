@@ -59,12 +59,14 @@ export interface CricketMatch {
   statusText: string;
   venue: string;
   toss: string;
+  dateTimeGMT?: string;
+  color?: string;
   team1: TeamInnings;
   team2: TeamInnings;
   currentBattingTeam: 'team1' | 'team2';
   requiredRunRate?: number;
   target?: number;
-  recentBalls: string[]; // e.g. ['1', '4', '•', 'W', '6', '1']
+  recentBalls: string[];
   recentEvents: BallEvent[];
   winProbability: {
     team1: number;
@@ -76,4 +78,40 @@ export interface CricketMatch {
     projectedScore: number;
     tacticalTip: string;
   };
+}
+
+export interface MatchListItem {
+  id: string;
+  title: string;
+  resultOrTime: string;
+  series?: string;
+  dateTimeGMT?: string;
+  status: 'recent' | 'upcoming';
+}
+
+export interface NewsItem {
+  id: string;
+  title: string;
+  category: string;
+  timeAgo: string;
+  readTime: string;
+  summary: string;
+  author: string;
+}
+
+export interface DiscussionPost {
+  id: string;
+  author: string;
+  avatar: string;
+  handle: string;
+  timeAgo: string;
+  content: string;
+  likes: number;
+  replies: number;
+  tag: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }

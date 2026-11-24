@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --cric-red: #cd0808;
+  --cric-navy: #05055f;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
@@ -18,12 +20,23 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94a3b8;
 }
+
+/* Color Buttons from original Criclive */
+.btn-charcoal { background-color: #212121; }
+.btn-orange { background-color: #ea580c; }
+.btn-blue { background-color: #1d4ed8; }
+.btn-green { background-color: #15803d; }
+.btn-purple { background-color: #7e22ce; }
+.btn-teal { background-color: #0f766e; }
+.btn-brown { background-color: #78350f; }
+.btn-red { background-color: #b91c1c; }
+.btn-cyan { background-color: #0e7490; }
